@@ -247,3 +247,15 @@ ggplot(weather_df, aes(x = tmax, y = name)) +
     ## (`stat_density_ridges()`).
 
 ![](viz_part_1_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+
+## saving and embedding plots
+
+``` r
+ggplot_weather = 
+  weather_df |> 
+  ggplot(aes(x = tmin, y = tmax))
+```
+
+ggplot_weather
+
+ggsave(“results/ggplotweather.pdf”, ggplot_weather)
