@@ -21,6 +21,8 @@ library(tidyverse)
 library(ggridges)
 ```
 
+knitr::opts_chunk\$set( fig.width = 6, fig.asp = .6, out.width = “90%” )
+
 Get the data for plotting today
 
 ``` r
