@@ -168,3 +168,82 @@ weather_df |>
     ## Warning: Removed 17 rows containing missing values (`geom_point()`).
 
 ![](viz_part_1_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+hex plot :-)
+
+``` r
+weather_df |> 
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_hex(alpa = .3)
+```
+
+    ## Warning in geom_hex(alpa = 0.3): Ignoring unknown parameters: `alpa`
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_binhex()`).
+
+![](viz_part_1_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+## univariate plotting, for when you just want to look at one variable at a time
+
+histogram…. it is ALWAYS the SAME!! GGplot.. then dataframe.. then what
+variable maps onto what axis… then what kind of graph you want !
+
+avoid stacking up bars in histrogram with “dodge”
+
+``` r
+ggplot(weather_df, aes(x= tmax, fill = name)) +
+  geom_histogram(position = "dodge")
+```
+
+    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_bin()`).
+
+![](viz_part_1_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+let;s use a density plot
+
+``` r
+ggplot(weather_df, aes(x = tmax, fill = name)) +
+  geom_density(alpha = .3, adjust = .5)
+```
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_density()`).
+
+![](viz_part_1_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+using boxplots
+
+``` r
+ggplot(weather_df, aes(y = tmax, x = name)) +
+  geom_boxplot()
+```
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_boxplot()`).
+
+![](viz_part_1_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+violin plots
+
+``` r
+ggplot(weather_df, aes(y = tmax, x = name)) +
+  geom_violin()
+```
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_ydensity()`).
+
+![](viz_part_1_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+
+ridge plot… I feel like this is on NYTimes a lot …
+
+``` r
+ggplot(weather_df, aes(x = tmax, y = name)) +
+  geom_density_ridges()
+```
+
+    ## Picking joint bandwidth of 1.54
+
+    ## Warning: Removed 17 rows containing non-finite values
+    ## (`stat_density_ridges()`).
+
+![](viz_part_1_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
